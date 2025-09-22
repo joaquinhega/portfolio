@@ -25,7 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: 'assets/newharvest/newharvest2.png', epigrafe: 'EMPRESAS CREADAS' },
                 { src: 'assets/newharvest/newharvest3.png', epigrafe: 'GESTION DE EMPRESAS' },
                 { src: 'assets/newharvest/newharvest4.png', epigrafe: 'VOUCHERS ASIGNADOS A UNA EMPRESA' },
-                { src: 'assets/newharvest/newharvest5.png', epigrafe: 'REPORTE DE VOUCHER EN PDF' }
+                { src: 'assets/newharvest/newharvest5.png', epigrafe: 'REPORTE DE VOUCHER EN PDF' },
+                { src: 'assets/newharvest/mobnewharvest.png', epigrafe: 'LADO CHOFER / APP MOBILE' },
+
             ]
         },
         'twinpack': {
@@ -44,6 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
+    const menuToggle = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('is-active');
+        navMenu.classList.toggle('is-active');
+    });
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -51,6 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+            // Cierra el menú en móviles después de hacer clic en un enlace
+            if (menuToggle.classList.contains('is-active')) {
+                menuToggle.classList.remove('is-active');
+                navMenu.classList.remove('is-active');
             }
         });
     });
@@ -93,26 +108,26 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('modal-resultado').innerHTML = projectData.resultado;
             document.getElementById('modal-testimonio').innerHTML = projectData.testimonio;
             
-modalCarrusel.innerHTML = '';
-currentCarruselImages = projectData.imagenes;
-currentCarruselImages.forEach(imgObj => {
-    const figure = document.createElement('figure');
-    figure.style.margin = '0';
-    figure.style.width = '100%';
-    figure.style.textAlign = 'center';
+    modalCarrusel.innerHTML = '';
+    currentCarruselImages = projectData.imagenes;
+    currentCarruselImages.forEach(imgObj => {
+        const figure = document.createElement('figure');
+        figure.style.margin = '0';
+        figure.style.width = '100%';
+        figure.style.textAlign = 'center';
 
-    const img = document.createElement('img');
-    img.src = imgObj.src;
-    img.alt = projectData.titulo;
+        const img = document.createElement('img');
+        img.src = imgObj.src;
+        img.alt = projectData.titulo;
 
-    const figcaption = document.createElement('figcaption');
-    figcaption.textContent = imgObj.epigrafe;
-    figcaption.className = 'modal-epigrafe';
+        const figcaption = document.createElement('figcaption');
+        figcaption.textContent = imgObj.epigrafe;
+        figcaption.className = 'modal-epigrafe';
 
-    figure.appendChild(img);
-    figure.appendChild(figcaption);
-    modalCarrusel.appendChild(figure);
-});
+        figure.appendChild(img);
+        figure.appendChild(figcaption);
+        modalCarrusel.appendChild(figure);
+    });
             
             modal.style.display = 'block';
             currentImageIndex = 0;
@@ -130,10 +145,10 @@ currentCarruselImages.forEach(imgObj => {
         }
     });
     
-function updateModalCarrusel() {
-    const offset = -currentImageIndex * 100;
-    modalCarrusel.style.transform = `translateX(${offset}%)`;
-}
+    function updateModalCarrusel() {
+        const offset = -currentImageIndex * 100;
+        modalCarrusel.style.transform = `translateX(${offset}%)`;
+    }
 
     modalNextBtn.addEventListener('click', () => {
         currentImageIndex = (currentImageIndex + 1) % currentCarruselImages.length;
