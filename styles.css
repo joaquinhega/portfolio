@@ -59,7 +59,7 @@ section:last-of-type {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
 
 .main-nav .logo {
@@ -685,6 +685,9 @@ footer {
 
 /* Diseño responsive */
 @media (max-width: 768px) {
+    .main-nav {
+        padding: 20px 20px;
+    }
     h1 {
         font-size: 2rem;
     }
