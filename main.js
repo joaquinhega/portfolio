@@ -70,21 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Validacion Formulario
-    const contactForm = document.querySelector('#contacto form');
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const nombre = document.getElementById('nombre').value.trim();
-        const mail = document.getElementById('mail').value.trim();
-        const mensaje = document.getElementById('mensaje').value.trim();
-        if (nombre === '' || mail === '' || mensaje === '') {
-            alert('Por favor, completa todos los campos del formulario.');
-        } else {
-            alert('¡Mensaje enviado con éxito! Te contactaré a la brevedad.');
-            contactForm.reset();
-        }
-    });
-
     // Modal y Galeria
     const modal = document.getElementById('modal');
     const closeBtn = document.querySelector('.close-btn');
