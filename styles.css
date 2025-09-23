@@ -648,7 +648,53 @@ p {
 .social-links i:hover {
     transform: scale(1.1);
 }
+.contacto-botones {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin: 32px 0;
+    flex-wrap: wrap;
+}
+.contacto-mail {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #444;
+    word-break: break-all;
+    user-select: all;
+}
+.contacto-mail i {
+    color: #3B72F4;
+    margin-right: 8px;
+}
+.btn-contacto {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3rem;
+    padding: 18px 32px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: none;
+}
 
+.btn-contacto.whatsapp {
+    background: #25D366;
+    color: #fff;
+}
+
+.btn-contacto.mail {
+    background: #3B72F4;
+    color: #fff;
+}
+
+.btn-contacto:hover {
+    transform: translateY(-3px) scale(1.04);
+    filter: brightness(1.08);
+}
 /* Sección Preguntas Frecuentes (mejoras de estilo) */
 #faq .faq-list {
     display: flex;
@@ -681,6 +727,31 @@ footer {
     background-color: var(--color-secondary);
     color: #fff;
     font-size: 0.9rem;
+}
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 0 12px 0;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+.footer-content a {
+    color: #3B72F4;
+    margin: 0 8px;
+    font-size: 1.5em;
+    transition: color 0.2s;
+}
+
+.footer-content a:hover {
+    color: #25D366;
+}
+
+.footer-content small {
+    font-size: 0.9em;
+    color: #888;
 }
 
 /* Diseño responsive */
@@ -775,5 +846,19 @@ footer {
     }
     #quien-soy h2{
         margin-bottom: 0px;
+    }
+    .contacto-botones {
+        flex-direction: column;
+        gap: 18px;
+    }
+    .btn-contacto {
+        width: 100%;
+        justify-content: center;
+        font-size: 1.1rem;
+        padding: 14px 0;
+    }
+    .footer-content {
+        font-size: 0.95rem;
+        gap: 6px;
     }
 }
